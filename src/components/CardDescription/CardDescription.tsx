@@ -49,29 +49,17 @@ const CardDescription = ({
     if (timeoutRef?.current) {
       clearTimeout(timeoutRef?.current);
     }
-  };
-
-  useEffect(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
 
     timeoutRef.current = setTimeout(() => {
       setFavoriteValue((lastValue) => {
-        if (liked) {
+        if (!liked) {
           return [...lastValue, id];
         } else {
           return lastValue?.filter((value) => value !== id);
         }
       });
     }, 300);
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [liked]);
+  };
 
   return (
     <>

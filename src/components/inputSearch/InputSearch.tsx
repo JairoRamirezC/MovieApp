@@ -8,7 +8,7 @@ export const InputSearch = () => {
   return (
     <div className={greating ? `inputSearchContainer--active` : `inputSearchContainer`}>
       <img src={Logo} alt="Logo" className='inputSearchContainer--active--imageLogo' />
-      <input className="inputSearchContainer--active--input" type="text" value={inputSearchValue} placeholder="Encuentra tu pelicula favorita" onChange={e => getInputValue(e.target.value)} />
+      <input className="inputSearchContainer--active--input" type="text" value={inputSearchValue} placeholder="Encuentra tu pelicula favorita" onChange={e => getInputValue(e?.target?.value)} />
     </div>
   )
 }

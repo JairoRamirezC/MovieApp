@@ -116,30 +116,31 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
 
 
   useEffect(() => {
-    if (!favoriteValue.length) return;
+    // if (favoriteValue || !favoriteValue.length) return;
     try {
-      console.log('favoriteValue >>> ', favoriteValue);
+      console.log("favoriteValue >>> ", favoriteValue);
       setFavoriteData({
-        data:null,
+        data: null,
         loading: true,
-        error: false
+        error: false,
       });
       Promise.all(
-        favoriteValue.map(favoriteId => APIMoviesApp?.getMovieById(favoriteId).then(data => data))
-      )
-      .then((response) => {
-        const data = response.map(({data}) => data);
+        favoriteValue.map((favoriteId) =>
+          APIMoviesApp?.getMovieById(favoriteId).then((data) => data)
+        )
+      ).then((response) => {
+        const data = response.map(({ data }) => data);
         setFavoriteData({
           data,
           loading: false,
-          error: false
+          error: false,
         });
       });
     } catch (error) {
       setFavoriteData({
         data: null,
         loading: false,
-        error: true
+        error: true,
       });
     }
   }, [favoriteValue]);

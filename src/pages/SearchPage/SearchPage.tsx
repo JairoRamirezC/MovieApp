@@ -9,8 +9,6 @@ const SearchPage = ():JSX.Element => {
   const {data: dataMostViewed, loading: loadingMostViewed} = mostViewed;
   const {data: dataFavoriteData, loading: loadingFavoriteData} = favoriteData;
 
-  // console.log('favoriteData >>> ', dataFavoriteData);
-
   return (
     <>
       <InputSearch />
