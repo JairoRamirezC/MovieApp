@@ -6,6 +6,7 @@ Movie App es una plataforma web que sirve como buscador de peliculas sin videos.
 - [Capturas de Pantalla](#capturas-de-pantalla)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Visitar Pagina](#visitar-pagina)
 
 
 # Instalación
@@ -103,6 +104,10 @@ MOVIE-APP/
 - Context
 - Sass
 - Material UI
+
+# Visitar Pagina
+[https://jairoramirezc.github.io/](https://jairoramirezc.github.io/MovieApp/)
+
 
 
 DEV: Jairo Ramirez Castanio - @JairoRamirezC
