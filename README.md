@@ -6,9 +6,6 @@ Movie App es una plataforma web que sirve como buscador de peliculas sin videos.
 - [Capturas de Pantalla](#capturas-de-pantalla)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
 
 
 # Instalación
