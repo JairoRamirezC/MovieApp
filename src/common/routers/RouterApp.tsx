@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import {SearchPage, Favourites, MoviesPage} from "../../pages";
+import {SearchPage, MoviesPage} from "../../pages";
 
 const RouterApp = () => {
   return (

@@ -9,8 +9,10 @@ export const PreviewCards = ({title, data}:PreviewCardsInterface) => {
 
   const scrollLeft = () => {
     if(carouselRef?.current){
+      // @ts-ignore
       carouselRef?.current?.scrollBy({
         top: 0,
+        // @ts-ignore
         left: -carouselRef?.current?.clientWidth,
         behavior: 'smooth'
       });
@@ -19,8 +21,10 @@ export const PreviewCards = ({title, data}:PreviewCardsInterface) => {
 
   const scrollRight = () => {
     if(carouselRef?.current){
+      // @ts-ignore
       carouselRef?.current?.scrollBy({
         top: 0,
+        // @ts-ignore
         left: carouselRef?.current?.clientWidth,
         behavior: 'smooth'
       });

@@ -10,6 +10,7 @@ export const ErrorComponent = () => {
   const handleClose = (event:SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
+      event
     }
     setOpen(false);
   };

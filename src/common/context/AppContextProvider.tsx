@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { AppContextProviderProps, FavoriteData, FavoriteDataInterface, InitialState, SearchData } from "../utils/types";
+import { AppContextProviderProps, FavoriteDataInterface, InitialState, SearchData } from "../utils/types";
 import APIMoviesApp from "../utils/APIMoviesApp";
 
 const initialState:InitialState = {
