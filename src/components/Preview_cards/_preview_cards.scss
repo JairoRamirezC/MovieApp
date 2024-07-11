@@ -1,0 +1,41 @@
+.previewCardsContainer{
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+
+  &__carousel{
+    display: flex;
+    overflow: hidden;
+    padding: 2rem 2rem;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &--carouselButton{
+    background-color: rgba(0,0,0,0.8);
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 100px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    &:hover {
+      background-color: rgba(0,0,0,1);
+    }
+
+    &--left {
+      left: 0;
+    }
+  
+    &--right {
+      right: 0;
+    }
+  }
+
+}

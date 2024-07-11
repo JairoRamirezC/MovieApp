@@ -1,0 +1,52 @@
+.MoviesPageContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  @media screen and (max-width: 490px){
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &--iconBack{
+    @media screen and (max-width:490px){
+      align-self: flex-start;
+    }
+  }
+
+  &__left img{
+    border-radius: 10px;
+  }
+  &--span{
+    color: $color_textGray;
+    font-size: 1.3rem;
+  }
+
+  &__right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    width: 40%;
+
+    @media screen and (max-width:490px){
+      width: 100%;
+    }
+
+    &--title{
+      font-size: 3rem;
+    }
+
+    &--category, &--description{
+      font-size: 1.3rem;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__footer{
+    align-items: center;
+    display: flex;
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+  }
+}

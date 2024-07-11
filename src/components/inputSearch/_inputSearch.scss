@@ -1,0 +1,63 @@
+.inputSearchContainer {
+  align-items: center;
+  background: $primary_colorBackground;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  transition: 0.5s;
+
+  &--input {
+    border: none;
+    border-radius: 50px;
+    height: 5rem;
+    max-width: 85rem;
+    outline: none;
+    padding: 1rem 2rem;
+    margin: 0 20px;
+    width: 85rem;
+  }
+}
+
+.inputSearchContainer--active{
+  align-items: center;
+  background: $primary_colorBackground;
+  display: flex;
+  flex-direction: column;
+  height: 35rem;
+  justify-content: center;
+  transition: 0.5s;
+  width: 100%;
+
+  &--input {
+    border: none;
+    border-radius: 50px;
+    height: 5rem;
+    max-width: 85rem;
+    outline: none;
+    padding: 1rem 2rem;
+    margin: 0 2rem;
+    width: 85rem;
+
+    @media screen and (min-width: 320px) and (max-width: 575px) {
+      width: 30rem;
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 991px) {
+      width: 40rem;
+    }
+  }
+
+  &--imageLogo{
+    margin-bottom: 20px;
+    width: 50rem;
+
+    @media screen and (min-width: 320px) and (max-width: 575px) {
+      width: 30rem;
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 991px) {
+      width: 40rem;
+    }
+  }
+}
+

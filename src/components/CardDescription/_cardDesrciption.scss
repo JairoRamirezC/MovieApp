@@ -1,0 +1,100 @@
+.CardDescriptionContainer{
+  background-color: $color_textLight;
+  box-shadow: 1px 3px 10px 1px $color_textGray;
+  border-radius: 5px;
+  flex: 0 0 auto;
+  height: 438px;
+  margin-right: 2rem;
+  max-height: 438px;
+  text-align: center;
+  transition: 0.5s;
+  width: 280px;
+
+  &:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    transform: translateY(-15px);
+  }
+
+  &--image{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 300px;
+    overflow: hidden;
+    transform: scale(1);
+    width: 100%;
+  }
+
+  &--ToggleButton{
+    border: 1px solid red;
+  }
+
+  &__info{
+    padding: 10px;
+
+    &--title{
+      font-size: 1.8rem;
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &--description{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      font-size: 1.2rem;
+      height: 4.5em;
+      line-height: 1.5em;
+      margin-top: 1rem;
+      max-height: 4.5em;
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+
+    &__rating{
+      align-items: center;
+      display: flex;
+      font-size: 1.2rem;
+      height: 2.5rem;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      &--rating-high{
+        border: 2px solid $rating_high;
+        align-items: center;
+        border-radius: 50%;
+        color: $rating_high;
+        display: flex;
+        font-weight: 700;
+        height: 30px;
+        justify-content: center;
+        width: 30px;
+      }
+      &--rating-medium{
+        border: 2px solid $rating_medium;
+        align-items: center;
+        border-radius: 50%;
+        color: $rating_medium;
+        display: flex;
+        font-weight: 700;
+        height: 30px;
+        justify-content: center;
+        width: 30px;
+      }
+      &--rating-low{
+        border: 2px solid $rating_low;
+        align-items: center;
+        border-radius: 50%;
+        color: $rating_low;
+        display: flex;
+        font-weight: 700;
+        height: 30px;
+        justify-content: center;
+        width: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+// var colors
+$primary_color: #0084f4;
+$primary_colorBackground: #213a8f;
+$primary_colorLight: rgba(0, 94, 153, 0.3);
+$color_textDark: black;
+$color_textLight: white;
+$color_textGray: #96999b;
+$color_link: #daac38;
+$rating_high: #00cf00;
+$rating_medium: #fc9f62;
+$rating_low: #ff626a;
+
+
+// import Pages
+@import "../../pages/SearchPage/searchPage";
+@import "../../pages/Movies/moviesPage";
+
+
+// import Components
+@import "../../components/inputSearch/inputSearch";
+@import "../../components/Preview_cards/preview_cards";
+@import "../../components/CardDescription/cardDesrciption";
+@import "../../components/Skeleton/skeleton";
