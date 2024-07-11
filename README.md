@@ -1,29 +1,111 @@
-# React + TypeScript + Vite
+Movie App es una plataforma web que sirve como buscador de peliculas sin videos. Con esto se podra demostrar la destresa que tiene el desarrollador Frontend trabajando en proyectos con React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Tabla de Contenidos
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Capturas de Pantalla](#capturas-de-pantalla)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Contribución](#contribución)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Instalación
+Es importante seguir estos pasos para poder ejecutar la plataforma de manera local
+En mi caso trabaje con npm
 
-## Expanding the ESLint configuration
+### Clonar el repositorio
+git clone https://github.com/JairoRamirezC/MovieApp.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Navegar al directorio del proyecto
+cd MovieApp
 
-- Configure the top-level `parserOptions` property like this:
+### SASS
+```npm install --save-dev node-sass``` Y/O ```npm install -D```
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+### React-Router-Dom
+```npm i react-router-dom```
+
+### Axios
+```npm install axios```
+
+### Material UI
+```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material```
+
+### Jest (https://jestjs.io/docs/getting-started)
+```npm install --save-dev jest```
+
+```npm install --save-dev @types/jest```
+
+```npm install --save-dev @babel/preset-typescript```
+
+```npm install --save-dev babel-jest @babel/core @babel/preset-env```
+
+### React Testing Library (https://testing-library.com/docs/react-testing-library/intro)
+```npm install --save-dev @testing-library/react @testing-library/dom```
+
+# Uso
+```npm run dev```
+
+# Capturas de Pantalla
+![image](https://github.com/JairoRamirezC/MovieApp/assets/19558437/425307a0-9239-4adf-bdd7-dc9e79e33c80)
+
+![image](https://github.com/JairoRamirezC/MovieApp/assets/19558437/513057e0-aecc-42c0-b559-a4ce0b330a2d)
+
+# Estructura del Proyecto
+```plaintext
+MOVIE-APP/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   │   ├── Icons/
+│   │   └── images/
+│   ├── common/
+│   │   ├── context/
+│   │   ├── helpers/
+│   │   ├── routers/
+│   │   ├── styles/
+│   │   └── utils/
+│   ├── components/
+│   │   ├── CardDescription/
+│   │   │   ├── _cardDescription.scss
+│   │   │   └── CardDescription.tsx
+│   │   ├── ErrorComponent/
+│   │   ├── inputSearch/
+│   │   ├── Preview_cards/
+│   │   └── Skeleton/
+│   ├── pages/
+│   │   ├── Favourites/
+│   │   ├── Movies/
+│   │   └── SearchPage/
+│   │       ├── _searchPage.scss
+│   │       └── SearchPage.tsx
+│   ├── index.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── tests/
+│   ├── .eslintrc.cjs
+│   ├── jest.config.js
+│   ├── jest.setup.js
+├── .gitignore
+├── API.env
+├── babel.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+└── README.md
 ```
+# Tecnologías Utilizadas
+- React
+- Typescript
+- React Router Dom
+- Axios
+- Context
+- Sass
+- Material UI
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# MovieApp
-Repository for the Movie App technical test presentation.
+
+DEV: Jairo Ramirez Castanio - @JairoRamirezC
