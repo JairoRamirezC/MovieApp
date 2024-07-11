@@ -68,7 +68,7 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
         }
       });
     } catch (error) {
-      console.log('Error en AppContextProvider: ', error);
+      console.error('Error en AppContextProvider: ', error);
       setMostViewed({
         data: null,
         loading: false,
@@ -99,7 +99,7 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
           }
         });
       } catch (error) {
-        console.log('Error fetching user data: ', error);
+        console.error('Error fetching user data: ', error);
         setSearchData({
           data: null,
           loading: false,
@@ -116,9 +116,7 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
 
 
   useEffect(() => {
-    // if (favoriteValue || !favoriteValue.length) return;
     try {
-      console.log("favoriteValue >>> ", favoriteValue);
       setFavoriteData({
         data: null,
         loading: true,
