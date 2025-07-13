@@ -50,7 +50,7 @@ const CardDescription = ({
       clearTimeout(timeoutRef?.current);
     }
 
-    // @ts-ignore
+    '@ts-expect-error'
     timeoutRef.current = setTimeout(() => {
       setFavoriteValue((lastValue) => {
         if (!liked) {
