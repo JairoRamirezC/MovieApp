@@ -28,6 +28,7 @@ const initialState:InitialState = {
 }
 
 export const AppContext = createContext(initialState);
+// export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({children}:AppContextProviderProps) => {
   const [greating] = useState<boolean>(true);
@@ -48,7 +49,10 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
     loading: false,
     error: false
   });
-  const [favoriteValue, setFavoriteValue] = useState<number[]>([]);
+  const [favoriteValue, setFavoriteValue] = useState<number[]>(() => {
+    const storedFavorites = localStorage.getItem('favoriteMovies');
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
 
   useEffect(() => {
     try {
@@ -122,9 +126,10 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
         loading: true,
         error: false,
       });
+      console.log('favoriteValue >>> ', favoriteValue);
       Promise.all(
-        favoriteValue.map((favoriteId) =>
-          APIMoviesApp?.getMovieById(favoriteId).then((data) => data)
+        favoriteValue.map((favoriteId:number) =>
+          APIMoviesApp?.getMovieById(favoriteId).then(data => data)
         )
       ).then((response) => {
         const data = response.map(({ data }) => data);

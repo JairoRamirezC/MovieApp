@@ -56,7 +56,7 @@ const CardDescription = ({
         if (!liked) {
           return [...lastValue, id];
         } else {
-          return lastValue?.filter((value) => value !== id);
+          return lastValue?.filter(value => value !== id);
         }
       });
     }, 300);

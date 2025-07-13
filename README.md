@@ -20,7 +20,7 @@ git clone https://github.com/JairoRamirezC/MovieApp.git
 cd MovieApp
 
 ### SASS
-```npm install --save-dev node-sass``` Y/O ```npm install -D```
+```npm install --save-dev node-sass``` Y/O ```npm install -D node-sass```
 
 ### React-Router-Dom
 ```npm i react-router-dom```

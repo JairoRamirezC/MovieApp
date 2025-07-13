@@ -28,24 +28,35 @@
   transition: 0.5s;
   width: 100%;
 
-  &--input {
-    border: none;
-    border-radius: 50px;
-    height: 5rem;
-    max-width: 85rem;
-    outline: none;
-    padding: 1rem 2rem;
-    margin: 0 2rem;
-    width: 85rem;
-
-    @media screen and (min-width: 320px) and (max-width: 575px) {
-      width: 30rem;
-    }
-
-    @media screen and (min-width: 576px) and (max-width: 991px) {
-      width: 40rem;
+  &--inputContainer{
+    display: flex;
+    flex-direction: column;
+    
+    &--input {
+      border: none;
+      border-radius: 50px;
+      height: 5rem;
+      max-width: 85rem;
+      outline: none;
+      padding: 1rem 2rem;
+      margin: 0 2rem;
+      width: 85rem;
+  
+      @media screen and (min-width: 320px) and (max-width: 575px) {
+        width: 30rem;
+      }
+  
+      @media screen and (min-width: 576px) and (max-width: 991px) {
+        width: 40rem;
+      }
+  
+      &--error{
+        border: 2px solid $primary_colorError;
+        box-shadow: 0 0 10px $primary_colorError;
+      }
     }
   }
+
 
   &--imageLogo{
     margin-bottom: 20px;
