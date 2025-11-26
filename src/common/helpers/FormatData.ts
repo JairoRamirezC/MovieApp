@@ -1,7 +1,15 @@
 
 export const FormatData = (dateValue:string):string => {
-  const dateString = dateValue;
-  const date = new Date(dateString);
+  if (isNaN(Date.parse(dateValue))) {
+    return '';
+  }
+
+  const [year, month, day] = dateValue.split('-');
+  if (!year || !month || !day) {
+    return '';
+  }
+  
+  const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   const options: Intl.DateTimeFormatOptions = { 
     year: 'numeric', 
     month: 'short', 

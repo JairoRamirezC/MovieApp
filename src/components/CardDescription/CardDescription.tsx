@@ -17,7 +17,7 @@ const CardDescription = ({
   rating,
   date,
 }: CardDescriptionInterface) => {
-  const { setSeccionSelected, setFavoriteValue } = useContext(AppContext);
+  const { setSeccionSelected, setFavoriteValue, favoriteValue } = useContext(AppContext);
   const [ratingStyle, setRatingStyle] = useState<string>("");
   const [dateFormated, setDateFormated] = useState<string>("");
   const [ratingCalculation] = useState<number>(Math.round(rating * 10) / 10);
@@ -37,6 +37,13 @@ const CardDescription = ({
     setDateFormated(FormatData(date));
   }, []);
 
+  useEffect(() => {
+    // mark as liked if present in favorites from context
+    if (Array.isArray(favoriteValue)) {
+      setLiked(favoriteValue.includes(id));
+    }
+  }, [favoriteValue, id]);
+
   const handleClickCard = () => {
     setSeccionSelected(title);
     navigate(`/movie/${id}`, {
@@ -44,7 +51,8 @@ const CardDescription = ({
     });
   };
 
-  const handleLike = () => {
+  const handleLike = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (event && event.stopPropagation) event.stopPropagation();
     setLiked(!liked);
     if (timeoutRef?.current) {
       clearTimeout(timeoutRef?.current);
@@ -64,35 +72,16 @@ const CardDescription = ({
 
   return (
     <>
-      <IconButton
-        onClick={handleLike}
-        color="primary"
-        sx={{
-          position: "relative",
-          backgroundColor: "rgba(0,0,0,0.8)",
-          left: "280px",
-          width: 40,
-          height: 40,
-          zIndex: 2,
-        }}
-      >
-        {liked ? (
-          <FavoriteIcon
-            sx={{
-              width: 30,
-              height: 30,
-            }}
-          />
-        ) : (
-          <FavoriteBorderIcon
-            sx={{
-              width: 30,
-              height: 30,
-            }}
-          />
-        )}
-      </IconButton>
       <div className="CardDescriptionContainer" onClick={handleClickCard}>
+          {title !== 'Mis Favoritos' && (
+            <IconButton className="CardDescriptionContainer__favoriteButton" onClick={handleLike} aria-label="favorite" sx={{position: 'absolute', top: 8, right: 8, zIndex: 6, bgcolor: 'rgba(0,0,0,0.45)', width: 44, height: 44, borderRadius: '50%', padding: 0}}>
+              {liked ? (
+                <FavoriteIcon sx={{ color: '#fff', width: 22, height: 22 }} />
+              ) : (
+                <FavoriteBorderIcon sx={{ color: '#fff', width: 22, height: 22 }} />
+              )}
+            </IconButton>
+          )}
         <img
           src={image ? `https://image.tmdb.org/t/p/w400/${image}` : ImageEmpty}
           alt="image_movie"

@@ -163,6 +163,7 @@ const AppContextProvider = ({children}:AppContextProviderProps) => {
       mostViewed,
       setSeccionSelected,
       seccionSelected,
+      favoriteValue,
       setFavoriteValue,
       favoriteData
     }}>

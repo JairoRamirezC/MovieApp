@@ -9,6 +9,7 @@ export interface InitialState {
   getInputValue: (value:string) => void;
   setSeccionSelected: React.Dispatch<React.SetStateAction<string | null>>;
   seccionSelected: string | null;
+  favoriteValue: number[];
   setFavoriteValue: React.Dispatch<React.SetStateAction<number[]>>;
   favoriteData: FavoriteDataInterface;
 }
