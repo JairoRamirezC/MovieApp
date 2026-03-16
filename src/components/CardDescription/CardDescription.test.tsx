@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import type { InitialState } from '../../common/utils/types';
 import type { Dispatch, SetStateAction } from 'react';
 import CardDescription from './CardDescription';
@@ -15,6 +16,7 @@ describe('CardDescription component', () => {
     };
 
     render(
+      <MemoryRouter>
       <AppContext.Provider value={contextValue as InitialState}>
         <CardDescription
           id={1}
@@ -26,6 +28,7 @@ describe('CardDescription component', () => {
           date={'2025-01-01'}
         />
       </AppContext.Provider>
+      </MemoryRouter>
     );
 
     expect(screen.getByText('My Movie')).toBeInTheDocument();
@@ -36,6 +39,7 @@ describe('CardDescription component', () => {
   test('does not render favorite button when in Mis Favoritos', () => {
     const contextValue: Partial<InitialState> = { setSeccionSelected: (() => {}) as unknown as Dispatch<SetStateAction<string | null>>, setFavoriteValue: (() => {}) as unknown as Dispatch<SetStateAction<number[]>>, favoriteValue: [] };
     render(
+      <MemoryRouter>
       <AppContext.Provider value={contextValue as InitialState}>
         <CardDescription
           id={2}
@@ -47,6 +51,7 @@ describe('CardDescription component', () => {
           date={'2025-01-01'}
         />
       </AppContext.Provider>
+      </MemoryRouter>
     );
 
     expect(screen.queryByLabelText('favorite')).toBeNull();
@@ -58,6 +63,7 @@ describe('CardDescription component', () => {
     const contextValue: Partial<InitialState> = { setSeccionSelected: (() => {}) as unknown as Dispatch<SetStateAction<string | null>>, setFavoriteValue: mockSetFavorite, favoriteValue: [] };
 
     render(
+      <MemoryRouter>
       <AppContext.Provider value={contextValue as InitialState}>
         <CardDescription
           id={11}
@@ -69,6 +75,7 @@ describe('CardDescription component', () => {
           date={'2025-01-01'}
         />
       </AppContext.Provider>
+      </MemoryRouter>
     );
 
     const btn = screen.getByLabelText('favorite');

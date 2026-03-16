@@ -1,0 +1,149 @@
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: deploy-eks-infra
+  title: Deploy EKS Infrastructure with Terraform
+  description: Template to deploy an EKS cluster using Terraform and GitHub Actions
+  tags:
+    - aws
+    - terraform
+    - eks
+spec:
+  owner: team@example.com
+  type: service
+  parameters:
+    - title: Project Information
+      required:
+        - project_name
+        - environment
+        - aws_region
+      properties:
+        project_name:
+          type: string
+          title: Project Name
+          description: Name of the project for EKS cluster identification. Lowercase and hyphens only.
+        environment:
+          type: string
+          title: Environment
+          enum:
+            - development
+            - staging
+            - production
+          default: development
+        aws_region:
+          type: string
+          title: AWS Region
+          enum:
+            - us-east-1
+            - us-west-2
+            - eu-west-1
+            - eu-central-1
+            - ap-southeast-1
+          default: us-east-1
+    - title: EKS Cluster Configuration
+      required:
+        - cluster_version
+        - node_instance_type
+        - desired_capacity
+      properties:
+        cluster_version:
+          type: string
+          enum:
+            - "1.28"
+            - "1.29"
+            - "1.30"
+          default: "1.30"
+        node_instance_type:
+          type: string
+          enum:
+            - t3.medium
+            - t3.large
+            - t3.xlarge
+            - m5.large
+            - m5.xlarge
+            - m5.2xlarge
+          default: t3.medium
+        desired_capacity:
+          type: integer
+          minimum: 1
+          maximum: 10
+          default: 2
+        min_capacity:
+          type: integer
+          minimum: 1
+          maximum: 5
+          default: 1
+        max_capacity:
+          type: integer
+          minimum: 1
+          maximum: 20
+          default: 5
+    - title: Network Configuration
+      properties:
+        vpc_cidr:
+          type: string
+          default: 10.0.0.0/16
+        enable_nat_gateway:
+          type: boolean
+          default: true
+        enable_vpn_gateway:
+          type: boolean
+          default: false
+    - title: Additional Features
+      properties:
+        enable_monitoring:
+          type: boolean
+          default: true
+        enable_logging:
+          type: boolean
+          default: true
+        install_metrics_server:
+          type: boolean
+          default: true
+        install_cluster_autoscaler:
+          type: boolean
+          default: false
+        tags:
+          type: string
+  steps:
+    - id: log
+      name: Log Template Execution
+      action: log:debug
+      input:
+        message: "Executing Deploy EKS Template for ${{ parameters.project_name }} in ${{ parameters.environment }}"
+    - id: dispatch
+      name: Trigger GitHub Actions Workflow
+      action: github:actions:dispatch
+      input:
+        repo: example-org/terraform-eks-workflows
+        workflow: deploy-eks-cluster.yml
+        ref: main
+        inputs:
+          project_name: ${{ parameters.project_name }}
+          environment: ${{ parameters.environment }}
+          aws_region: ${{ parameters.aws_region }}
+          cluster_version: ${{ parameters.cluster_version }}
+          node_instance_type: ${{ parameters.node_instance_type }}
+          desired_capacity: ${{ parameters.desired_capacity }}
+          min_capacity: ${{ parameters.min_capacity }}
+          max_capacity: ${{ parameters.max_capacity }}
+          vpc_cidr: ${{ parameters.vpc_cidr }}
+          enable_nat_gateway: ${{ parameters.enable_nat_gateway }}
+          enable_vpn_gateway: ${{ parameters.enable_vpn_gateway }}
+          enable_monitoring: ${{ parameters.enable_monitoring }}
+          enable_logging: ${{ parameters.enable_logging }}
+          install_metrics_server: ${{ parameters.install_metrics_server }}
+          install_cluster_autoscaler: ${{ parameters.install_cluster_autoscaler }}
+          tags: ${{ parameters.tags }}
+    - id: register
+      name: Register EKS Cluster in Catalog
+      action: catalog:register
+      input:
+        file: /catalog-info.yaml
+        optional: true
+    - id: slack
+      name: Send Slack Notification
+      action: slack:post
+      input:
+        channel: "#infrastructure-deployments"
+        message: "EKS deployment triggered for ${{ parameters.project_name }} (environment: ${{ parameters.environment }})"
