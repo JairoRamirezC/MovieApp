@@ -1,0 +1,30 @@
+name: Iniciando flujo de trabajo
+
+on:
+  push:
+    branches:
+      - feature/*
+  pull_request:
+    branches:
+      - integration
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+  greatings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Run Script
+        run: node scripts/hello_word.js
+  finish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say goodbye
+        run: echo "Goodbye, World!"

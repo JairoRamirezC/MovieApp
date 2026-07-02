@@ -29,7 +29,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest]
+    
+    runs-on: ${{ matrix.platform }}
+
+    # runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -38,6 +44,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+          cache: 'npm'
 
       - name: npm install, build, and test
         run: |
