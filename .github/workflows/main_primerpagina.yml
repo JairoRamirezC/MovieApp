@@ -27,6 +27,14 @@ on:
   # - cron: '0 0 * * *' # Runs every day at midnight
 
 jobs:
+  known-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: What event is this?
+        run: | 
+          echo "The event that triggered this workflow is:" ${{ github.event_name }}
+          echo "The branch is:" ${{ github.ref }}
+
   build:
     strategy:
       matrix:
