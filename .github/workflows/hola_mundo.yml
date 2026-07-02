@@ -1,4 +1,6 @@
 name: Iniciando flujo de trabajo
+# run-name: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+run-name: 'Ejecutando hola_mundo.yml workflow'
 
 on:
   push:

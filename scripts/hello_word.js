@@ -1,3 +1,3 @@
 const SALUDO = "Hello, World!";
 
-console.log(SALUDO);
+console.log(`${SALUDO } from JavaScript!`);
