@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '22.x'
       - name: Run Script
         run: node scripts/hello_word.js
   finish:
