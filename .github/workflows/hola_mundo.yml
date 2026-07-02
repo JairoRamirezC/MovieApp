@@ -25,6 +25,7 @@ jobs:
         run: node scripts/hello_word.js
   finish:
     runs-on: ubuntu-latest
+    needs: greatings
     steps:
       - name: Say goodbye
         run: echo "Goodbye, World!"
